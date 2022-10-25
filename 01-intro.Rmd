@@ -1,4 +1,4 @@
-# Introduction {#intro}
+# Introduction to R {#intro}
 
 Changes are welcome for suggestions on where to start.
 

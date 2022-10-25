@@ -12,7 +12,7 @@ github-repo: agdamsbo/neuRo-group
 description: "This is a minimal book on introduction to R and suggestions for research work in R."
 ---
 
-# Prerequisites
+# Preamble
 
 This book is created and maintained as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital.
 
