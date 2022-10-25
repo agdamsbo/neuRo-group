@@ -1,0 +1,26 @@
+--- 
+title: "neuRo-group AUH"
+author: "Andreas Gammelgaard Damsbo"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: agdamsbo/neuRo-group
+description: "This is a minimal book on introduction to R and suggestions for research work in R."
+---
+
+# Prerequisites
+
+This book is created and maintained as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital.
+
+The book is build using the **bookdown** package[R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

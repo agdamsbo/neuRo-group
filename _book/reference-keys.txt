@@ -1,0 +1,4 @@
+prerequisites
+intro
+literature
+on-geocomputation

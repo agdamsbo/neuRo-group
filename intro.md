@@ -1,5 +1,0 @@
-# Introduction to R
-
-Changes are welcome for suggestions on where to start.
-
-Download R-Studio: [R-Studio](https://www.rstudio.com/products/rstudio/download/)
