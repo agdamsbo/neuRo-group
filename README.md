@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/rstudio/bookdown-demo.svg?branch=master)](https://travis-ci.com/rstudio/bookdown-demo)
+[![Page Build Status](https://github.com/agdamsbo/neuro-group/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/agdamsbo/neuro-group/actions/workflows/pages/pages-build-deployment)
 
 # neuRo-group
 R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital.
