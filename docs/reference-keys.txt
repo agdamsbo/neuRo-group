@@ -1,4 +1,4 @@
-prerequisites
+preamble
 intro
 literature
 on-geocomputation
