@@ -1,4 +1,5 @@
 preamble
+source
 intro
 redcap
 getting-started

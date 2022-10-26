@@ -3,11 +3,13 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">neuRo-group AUH</a></li>
+        <li><a href="https://agdamsbo.github.io/neuRo-group/">neuRo reference book</a></li>
       after: |
+        <li><a href="https://github.com/agdamsbo/neuRo-group">Source on GitHub</a></li>
+        <li><a href="https://matrix.to/#/#neuro-auh:matrix.org">neuRo group on Matrix</a></li>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: null
-    download: ["pdf"]
+    download: null
     sharing: null
 bookdown::pdf_book:
   includes:
