@@ -1,160 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 REDCap in R | neuRo-group AUH</title>
-<meta name="author" content="Andreas Gammelgaard Damsbo">
-<meta name="description" content="Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like REDCap) and only working on temporary data on your machine only saving outcome...">
-<meta name="generator" content="bookdown 0.29 with bs4_book()">
-<meta property="og:title" content="Chapter 3 REDCap in R | neuRo-group AUH">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like REDCap) and only working on temporary data on your machine only saving outcome...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 REDCap in R | neuRo-group AUH">
-<meta name="twitter:description" content="Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like REDCap) and only working on temporary data on your machine only saving outcome...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 REDCap in R | neuRo-group AUH</title>
+  <meta name="description" content="This is a minimal book on introduction to R and suggestions for research work in R." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 REDCap in R | neuRo-group AUH" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal book on introduction to R and suggestions for research work in R." />
+  <meta name="github-repo" content="agdamsbo/neuRo-group" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 REDCap in R | neuRo-group AUH" />
+  
+  <meta name="twitter:description" content="This is a minimal book on introduction to R and suggestions for research work in R." />
+  
+
+<meta name="author" content="Andreas Gammelgaard Damsbo" />
+
+
+<meta name="date" content="2022-10-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="recom.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
 <style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">neuRo-group AUH</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Preamble</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">2</span> Introduction to R</a></li>
-<li><a class="active" href="redcap.html"><span class="header-section-number">3</span> REDCap in R</a></li>
-<li><a class="" href="recom.html"><span class="header-section-number">4</span> Recommendations</a></li>
-<li><a class="" href="literature.html"><span class="header-section-number">5</span> Literature</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">neuRo-group AUH</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preamble</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a></li>
+<li class="chapter" data-level="3" data-path="redcap.html"><a href="redcap.html"><i class="fa fa-check"></i><b>3</b> REDCap in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="redcap.html"><a href="redcap.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="redcap.html"><a href="redcap.html#notes"><i class="fa fa-check"></i><b>3.2</b> Notes</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="recom.html"><a href="recom.html"><i class="fa fa-check"></i><b>4</b> Recommendations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="recom.html"><a href="recom.html#more-advanced-r"><i class="fa fa-check"></i><b>4.1</b> More Advanced R</a></li>
+<li class="chapter" data-level="4.2" data-path="recom.html"><a href="recom.html#on-geocomputation"><i class="fa fa-check"></i><b>4.2</b> On geocomputation</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>5</b> Literature</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="redcap" class="section level1" number="3">
-<h1>
-<span class="header-section-number">3</span> REDCap in R<a class="anchor" aria-label="anchor" href="#redcap"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">neuRo-group AUH</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="redcap" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> REDCap in R<a href="redcap.html#redcap" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like <a href="redcap.rm.dk">REDCap</a>) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.</p>
-<p>In the following is a guide to get started working on REDCap data in R using the <a href="https://ouhscbbmc.github.io/REDCapR/">REDCapR-package</a>.<span class="citation">(<a href="literature.html#ref-R-REDCapR" role="doc-biblioref">Beasley 2022</a>)</span></p>
+<p>In the following is a guide to get started working on REDCap data in R using the <a href="https://ouhscbbmc.github.io/REDCapR/">REDCapR-package</a>.<span class="citation">(<a href="#ref-R-REDCapR" role="doc-biblioref">Beasley 2022</a>)</span></p>
 <p>Following the package link provides an extensive description on workflows and functionality. However, sometimes less is more, and so goes.</p>
-<div id="getting-started" class="section level2" number="3.1">
-<h2>
-<span class="header-section-number">3.1</span> Getting started<a class="anchor" aria-label="anchor" href="#getting-started"><i class="fas fa-link"></i></a>
-</h2>
+<div id="getting-started" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Getting started<a href="redcap.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before you are able to get any data out of REDCap, make sure that you are able to get in. After you are logged in, make sure, that you have permissions to get an API-key. The API-key is a alpha-numeric key used to verify yourself to the REDCap-server, when requesting data export.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Returns the variables "record_id" and "age".</span></span>
-<span><span class="va">ds_some_vars</span> <span class="op">&lt;-</span> <span class="fu">redcap_read</span><span class="op">(</span></span>
-<span>  redcap_uri   <span class="op">=</span> <span class="st">"https://redcap.au.dk/api/"</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span>  token        <span class="op">=</span> <span class="st">"YOUR_API_KEY_GOES_HERE"</span>,</span>
-<span>  fields       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"record_id"</span>, <span class="st">"age"</span><span class="op">)</span></span>
-<span><span class="op">)</span><span class="op">$</span><span class="va">data</span> </span>
-<span></span>
-<span><span class="co"># Return only records with IDs of 1 and 4</span></span>
-<span><span class="va">ds_some_rows</span> <span class="op">&lt;-</span> <span class="fu">redcap_read</span><span class="op">(</span></span>
-<span>  redcap_uri   <span class="op">=</span> <span class="st">"https://redcap.au.dk/api/"</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span>  token        <span class="op">=</span> <span class="st">"YOUR_API_KEY_GOES_HERE"</span>,</span>
-<span>  records      <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="redcap.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the variables &quot;record_id&quot; and &quot;age&quot;.</span></span>
+<span id="cb1-2"><a href="redcap.html#cb1-2" aria-hidden="true" tabindex="-1"></a>ds_some_vars <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb1-3"><a href="redcap.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb1-4"><a href="redcap.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb1-5"><a href="redcap.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields       =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb1-6"><a href="redcap.html#cb1-6" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data </span>
+<span id="cb1-7"><a href="redcap.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="redcap.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Return only records with IDs of 1 and 4</span></span>
+<span id="cb1-9"><a href="redcap.html#cb1-9" aria-hidden="true" tabindex="-1"></a>ds_some_rows <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb1-10"><a href="redcap.html#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb1-11"><a href="redcap.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb1-12"><a href="redcap.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb1-13"><a href="redcap.html#cb1-13" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data</span></code></pre></div>
 <p>To get a full list of available variable names, you can either go through the codebook on REDCap, or you can try the following, but be aware, that the resulting vector of variable names can get a little long and confusing.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Returns a vector of names of all accessible variables.</span></span>
-<span><span class="va">variable_names</span> <span class="op">&lt;-</span> <span class="fu">redcap_read</span><span class="op">(</span></span>
-<span>  redcap_uri   <span class="op">=</span> <span class="st">"https://redcap.au.dk/api/"</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span>  token        <span class="op">=</span> <span class="st">"YOUR_API_KEY_GOES_HERE"</span></span>
-<span><span class="op">)</span><span class="op">$</span><span class="va">data</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="redcap.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns a vector of names of all accessible variables.</span></span>
+<span id="cb2-2"><a href="redcap.html#cb2-2" aria-hidden="true" tabindex="-1"></a>variable_names <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb2-3"><a href="redcap.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb2-4"><a href="redcap.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span></span>
+<span id="cb2-5"><a href="redcap.html#cb2-5" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="redcap.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div>
 <p>Note that the ’ |&gt; ’ is the pipe-operator native to R since version 4.1. It works similarly to the ’ %&gt;% ’ from the <a href="https://tidyverse.tidyverse.org">tidyverse</a>.</p>
 </div>
-<div id="notes" class="section level2" number="3.2">
-<h2>
-<span class="header-section-number">3.2</span> Notes<a class="anchor" aria-label="anchor" href="#notes"><i class="fas fa-link"></i></a>
-</h2>
+<div id="notes" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Notes<a href="redcap.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As a standard only export privileges should be given to an API-key and only to de-identified data.</p>
 <p>Full access with both read and write access is possible but should be highly restricted.</p>
 <p>API-keys should be regenerated regularly.</p>
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="intro.html"><span class="header-section-number">2</span> Introduction to R</a></div>
-<div class="next"><a href="recom.html"><span class="header-section-number">4</span> Recommendations</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#redcap"><span class="header-section-number">3</span> REDCap in R</a></li>
-<li><a class="nav-link" href="#getting-started"><span class="header-section-number">3.1</span> Getting started</a></li>
-<li><a class="nav-link" href="#notes"><span class="header-section-number">3.2</span> Notes</a></li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
+<h3> Literature<a href="literature.html#literature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-REDCapR" class="csl-entry">
+Beasley, Will. 2022. <em>REDCapR: Interaction Between r and REDCap</em>. <a href="https://CRAN.R-project.org/package=REDCapR">https://CRAN.R-project.org/package=REDCapR</a>.
 </div>
-    </nav>
 </div>
+            </section>
 
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>neuRo-group AUH</strong>" was written by Andreas Gammelgaard Damsbo. It was last built on 2022-10-26.</p>
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="recom.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["neuRo-group AUH.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer>
 </body>
+
 </html>

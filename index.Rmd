@@ -18,6 +18,7 @@ This book is created and maintained as part of the R-group on neuroscience resea
 
 The book is build using the **bookdown** package[R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
