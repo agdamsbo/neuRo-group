@@ -1,7 +1,0 @@
-# Literature
-
-Here folllows a collection of suggestions on packages, pages and clever solutions
-
-## On geocomputation
-
-[link](https://geocompr.robinlovelace.net/)

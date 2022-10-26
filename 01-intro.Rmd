@@ -1,5 +1,9 @@
 # Introduction to R {#intro}
 
-Changes are welcome for suggestions on where to start.
+Welcome to R! The first thing to do is to get an idea of how using are (or any other programming language) is fundamentally different to eg using something like LibreOffice Calc or Excel. 
 
-Download R-Studio: [R-Studio](https://www.rstudio.com/products/rstudio/download/)
+Go to your preferred search platform and search for something like "basic r course" and you can get going.
+
+After you have the basic knowledge and a vocabulary on R, you are ready to start searching for solutions to your problems.
+
+For further help, your are always welcome to ask others in the group or you can join [the neuRo-R-group on Matrix](https://matrix.to/#/#neuro-auh:matrix.org). Just follow the link.

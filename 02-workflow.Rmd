@@ -1,0 +1,48 @@
+# Working in R with REDCap data {#workflow}
+
+Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like [REDCap](redcap.rm.dk)) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.
+
+In the following is a guide to get started working on REDCap data in R using the [REDCapR-package](https://ouhscbbmc.github.io/REDCapR/).[@R-REDCapR]
+
+Following the package link provides an extensive description on workflows and functionality. However, sometimes less is more, and so goes.
+
+## Getting started
+
+Before you are able to get any data out of REDCap, make sure that you are able to get in. After you are logged in, make sure, that you have permissions to get an API-key. The API-key is a alpha-numeric key used to verify yourself to the REDCap-server, when requesting data export.
+
+```{r readcapr-start, eval=FALSE}
+# Returns the variables "record_id" and "age".
+ds_some_vars <- redcap_read(
+  redcap_uri   = "https://redcap.au.dk/api/",  # This is the address for projects at the AU-server
+  token        = "YOUR_API_KEY_GOES_HERE",
+  fields       = c("record_id", "age")
+)$data 
+
+# Return only records with IDs of 1 and 4
+ds_some_rows <- redcap_read(
+  redcap_uri   = "https://redcap.au.dk/api/",  # This is the address for projects at the AU-server
+  token        = "YOUR_API_KEY_GOES_HERE",
+  records      = c(1, 4)
+)$data
+```
+
+To get a full list of available variable names, you can either go through the codebook on REDCap, or you can try the following, but be aware, that the resulting vector of variable names can get a little long and confusing.
+
+```{r readcapr-colnames, eval=FALSE}
+# Returns a vector of names of all accessible variables.
+variable_names <- redcap_read(
+  redcap_uri   = "https://redcap.au.dk/api/",  # This is the address for projects at the AU-server
+  token        = "YOUR_API_KEY_GOES_HERE"
+)$data |> 
+  colnames()
+```
+
+Note that the ' |> ' is the pipe-operator native to R since version 4.1. It works similarly to the ' %>% ' from the [tidyverse](https://tidyverse.tidyverse.org).
+
+## Notes
+
+As a standard only export privileges should be given to an API-key and only to de-identified data. 
+
+Full access with both read and write access is possible but should be highly restricted. 
+
+API-keys should be regenerated regularly.

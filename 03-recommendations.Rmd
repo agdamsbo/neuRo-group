@@ -1,0 +1,13 @@
+# Recommendations {#recom}
+
+Here follows a collection of suggestions on packages, pages and clever solutions
+
+## More Advanced R
+
+The Advanced R course at the PhD School at AU is based on this book: [Advanced R Course by Florian Privé](https://privefl.github.io/advr38book/index.html).
+
+This is a really good collection of more advanced R-use with focus on using the tidyverse-packages and working efficiently. A lot of other external references are also included for further reading.
+
+## On geocomputation
+
+[link](https://geocompr.robinlovelace.net/)

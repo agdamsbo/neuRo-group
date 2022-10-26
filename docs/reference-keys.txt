@@ -1,4 +1,9 @@
 preamble
 intro
-literature
+workflow
+getting-started
+notes
+recom
+more-advanced-r
 on-geocomputation
+literature

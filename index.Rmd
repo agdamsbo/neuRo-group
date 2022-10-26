@@ -21,6 +21,6 @@ The book is build using the **bookdown** package[R-bookdown] using the [**bookdo
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse'
 ), 'packages.bib')
 ```
