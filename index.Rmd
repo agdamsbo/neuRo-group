@@ -1,4 +1,4 @@
---- 
+---
 title: "neuRo reference book"
 author: "Andreas Gammelgaard Damsbo"
 date: "`r Sys.Date()`"
@@ -18,11 +18,9 @@ This book is created and maintained as part of the R-group on neuroscience resea
 
 The book is build using the **bookdown** package[R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
-
 ## Source
 
 The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group). You are welcome to contribute through comments or PRs. Or you can write an [email](mailto:andrlr@rm.dk) to the author and maintainer.
-
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

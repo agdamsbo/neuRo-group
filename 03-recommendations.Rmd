@@ -8,11 +8,13 @@ The Advanced R course at the PhD School at AU is based on this book: [Advanced R
 
 This is a really good collection of more advanced R-use with focus on using the tidyverse-packages and working efficiently. A lot of other external references are also included for further reading.
 
-
 ## PhD Biostat course CheatSheet
 
-As part of the PhD BioStat course, the teacher, Eric Parner is providing a Data Analysis reference overview, or CheatSheet. For easy acces, [download it here.](https://github.com/agdamsbo/neuRo-group/raw/main/resources/overview_biostat.PDF)
+As part of the PhD BioStat course, the teacher, Eric Parner is providing a Data Analysis reference overview, or CheatSheet.
 
+| [![Biostat CheatSheet](img/overview_biostat.jpg)](https://github.com/agdamsbo/neuRo-group/raw/main/resources/overview_biostat.PDF) |
+|:--:|
+| Biostat CheatSheet - click to download - source: [Eric Parner](https://pure.au.dk/portal/en/persons/erik-thorlund-parner(e20f05d3-5aaf-498a-a0f5-81e42dffcf41).html)|
 
 ## On geocomputation
 
