@@ -14,7 +14,7 @@ As part of the PhD BioStat course, the teacher, Eric Parner is providing a Data 
 
 | [![Biostat CheatSheet](img/overview_biostat.jpg)](https://github.com/agdamsbo/neuRo-group/raw/main/resources/overview_biostat.PDF) |
 |:--:|
-| Biostat CheatSheet - click to download - source: [Eric Parner](https://pure.au.dk/portal/en/persons/erik-thorlund-parner(e20f05d3-5aaf-498a-a0f5-81e42dffcf41).html)|
+| Biostat CheatSheet - click to download - source: [Eric Parner, AU](https://pure.au.dk/portal/en/persons/erik-thorlund-parner(e20f05d3-5aaf-498a-a0f5-81e42dffcf41).html)|
 
 ## On geocomputation
 

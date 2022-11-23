@@ -3,6 +3,7 @@ source
 intro
 redcap
 getting-started
+data-wrangling
 notes
 recom
 more-advanced-r

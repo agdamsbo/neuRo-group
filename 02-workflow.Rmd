@@ -11,6 +11,7 @@ Following the package link provides an extensive description on workflows and fu
 Before you are able to get any data out of REDCap, make sure that you are able to get in. After you are logged in, make sure, that you have permissions to get an API-key. The API-key is a alpha-numeric key used to verify yourself to the REDCap-server, when requesting data export.
 
 ```{r readcapr-start, eval=FALSE}
+library(REDCapR)
 # Returns the variables "record_id" and "age".
 ds_some_vars <- redcap_read(
   redcap_uri   = "https://redcap.au.dk/api/",  # This is the address for projects at the AU-server
@@ -37,12 +38,18 @@ variable_names <- redcap_read(
   colnames()
 ```
 
-Note that the ' |> ' is the pipe-operator native to R since version 4.1. It works similarly to the ' %>% ' from the [tidyverse](https://tidyverse.tidyverse.org).
+Note that the ' \|\> ' is the pipe-operator native to R since version 4.1. It works similarly to the ' %\>% ' from the [*tidyverse*](https://tidyverse.tidyverse.org).
+
+## Data wrangling
+
+When using the "repeated instruments" function within REDcap the dataset will be in "long" format. Depending on the analysis, the data set can be converted to a "wide" format. The `pivot_wider()` from the `tidyr pakckage` can be used.
+
+A custom, easier function is on its way as part of the `stRoke-package`. 23.nov.2022
 
 ## Notes
 
-As a standard only export privileges should be given to an API-key and only to de-identified data. 
+As a standard only export privileges should be given to an API-key and only to de-identified data.
 
-Full access with both read and write access is possible but should be highly restricted. 
+Full access with both read and write access is possible but should be highly restricted.
 
 API-keys should be regenerated regularly.
