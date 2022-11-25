@@ -40,11 +40,33 @@ variable_names <- redcap_read(
 
 Note that the ' \|\> ' is the pipe-operator native to R since version 4.1. It works similarly to the ' %\>% ' from the [*tidyverse*](https://tidyverse.tidyverse.org).
 
-## Data wrangling
+## Downloading data
 
-When using the "repeated instruments" function within REDcap the dataset will be in "long" format. Depending on the analysis, the data set can be converted to a "wide" format. The `pivot_wider()` from the `tidyr pakckage` can be used.
+When using a longitudinal project design or the "repeated instruments" functionality within REDcap, the dataset will be structured in "long" format with several rows for each ID (one for each "event" and "instance" of repeated instrument). 
 
-A custom, easier function is on its way as part of the `stRoke-package`. 23.nov.2022
+Depending on the analysis, the data set can be converted to a "wide" format, with only one row per ID. The `pivot_wider()` from the `tidyr pakckage` can be used, but the most straight-forward approach is to only download the data needed and use the `join_left()` function to merge data. When handling data from repeated instruments the `pivot_wider()` can be used first.
+
+Here is an example on how to export data on RBANS and cleaning the data for plotting.
+
+```{r readcapr-example, eval=FALSE}
+ds <- redcap_read(
+  redcap_uri   = "https://redcap.au.dk/api/",  # This is the address for projects at the AU-server
+  token        = "YOUR_API_KEY_GOES_HERE",
+  records      = c(1:35), # Downloading data from ID 1 to 35.
+  forms        = "rbans", # Downloading only the RBANS instrument
+  event        = c("3_months_arm_1", # Specifying only to download 3 and 12 months data
+                   "12_months_arm_1")
+  )$data |> 
+  select( # Selecting variables to keep
+    c("record_id",
+      "redcap_event_name",
+      ends_with(c("_is","_lo","_up","_per"))) # I only want index scores, lower and upper CIs and percentile.
+         )   |> 
+  na.omit() # Omitting IDs with missing data.
+head(ds, n = 5) # Showing only the first 5 rows
+```
+
+Further examples and scripts can be found in the [ENIGMA code repository](https://github.com/agdamsbo/ENIGMAtrial_R).
 
 ## Notes
 

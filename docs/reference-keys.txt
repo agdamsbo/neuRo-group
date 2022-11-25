@@ -3,10 +3,11 @@ source
 intro
 redcap
 getting-started
-data-wrangling
+downloading-data
 notes
 recom
 more-advanced-r
 phd-biostat-course-cheatsheet
 on-geocomputation
+inspiration-for-plots
 literature

@@ -23,7 +23,7 @@
 <meta name="author" content="Andreas Gammelgaard Damsbo" />
 
 
-<meta name="date" content="2022-11-23" />
+<meta name="date" content="2022-11-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -166,14 +166,15 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="redcap.html"><a href="redcap.html"><i class="fa fa-check"></i><b>3</b> REDCap in R</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="redcap.html"><a href="redcap.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
-<li class="chapter" data-level="3.2" data-path="redcap.html"><a href="redcap.html#data-wrangling"><i class="fa fa-check"></i><b>3.2</b> Data wrangling</a></li>
+<li class="chapter" data-level="3.2" data-path="redcap.html"><a href="redcap.html#downloading-data"><i class="fa fa-check"></i><b>3.2</b> Downloading data</a></li>
 <li class="chapter" data-level="3.3" data-path="redcap.html"><a href="redcap.html#notes"><i class="fa fa-check"></i><b>3.3</b> Notes</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="recom.html"><a href="recom.html"><i class="fa fa-check"></i><b>4</b> Recommendations</a>
+<li class="chapter" data-level="4" data-path="recom.html"><a href="recom.html"><i class="fa fa-check"></i><b>4</b> Recommendations and inspiration</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="recom.html"><a href="recom.html#more-advanced-r"><i class="fa fa-check"></i><b>4.1</b> More Advanced R</a></li>
 <li class="chapter" data-level="4.2" data-path="recom.html"><a href="recom.html#phd-biostat-course-cheatsheet"><i class="fa fa-check"></i><b>4.2</b> PhD Biostat course CheatSheet</a></li>
 <li class="chapter" data-level="4.3" data-path="recom.html"><a href="recom.html#on-geocomputation"><i class="fa fa-check"></i><b>4.3</b> On geocomputation</a></li>
+<li class="chapter" data-level="4.4" data-path="recom.html"><a href="recom.html#inspiration-for-plots"><i class="fa fa-check"></i><b>4.4</b> Inspiration for plots</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>5</b> Literature</a></li>
 <li class="divider"></li>
@@ -229,10 +230,27 @@ div.csl-indent {
 <span id="cb2-6"><a href="redcap.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div>
 <p>Note that the ’ |&gt; ’ is the pipe-operator native to R since version 4.1. It works similarly to the ’ %&gt;% ’ from the <a href="https://tidyverse.tidyverse.org"><em>tidyverse</em></a>.</p>
 </div>
-<div id="data-wrangling" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Data wrangling<a href="redcap.html#data-wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When using the “repeated instruments” function within REDcap the dataset will be in “long” format. Depending on the analysis, the data set can be converted to a “wide” format. The <code>pivot_wider()</code> from the <code>tidyr pakckage</code> can be used.</p>
-<p>A custom, easier function is on its way as part of the <code>stRoke-package</code>. 23.nov.2022</p>
+<div id="downloading-data" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Downloading data<a href="redcap.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When using a longitudinal project design or the “repeated instruments” functionality within REDcap, the dataset will be structured in “long” format with several rows for each ID (one for each “event” and “instance” of repeated instrument).</p>
+<p>Depending on the analysis, the data set can be converted to a “wide” format, with only one row per ID. The <code>pivot_wider()</code> from the <code>tidyr pakckage</code> can be used, but the most straight-forward approach is to only download the data needed and use the <code>join_left()</code> function to merge data. When handling data from repeated instruments the <code>pivot_wider()</code> can be used first.</p>
+<p>Here is an example on how to export data on RBANS and cleaning the data for plotting.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="redcap.html#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb3-2"><a href="redcap.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb3-3"><a href="redcap.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb3-4"><a href="redcap.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>), <span class="co"># Downloading data from ID 1 to 35.</span></span>
+<span id="cb3-5"><a href="redcap.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">forms        =</span> <span class="st">&quot;rbans&quot;</span>, <span class="co"># Downloading only the RBANS instrument</span></span>
+<span id="cb3-6"><a href="redcap.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">event        =</span> <span class="fu">c</span>(<span class="st">&quot;3_months_arm_1&quot;</span>, <span class="co"># Specifying only to download 3 and 12 months data</span></span>
+<span id="cb3-7"><a href="redcap.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;12_months_arm_1&quot;</span>)</span>
+<span id="cb3-8"><a href="redcap.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="redcap.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( <span class="co"># Selecting variables to keep</span></span>
+<span id="cb3-10"><a href="redcap.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>,</span>
+<span id="cb3-11"><a href="redcap.html#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;redcap_event_name&quot;</span>,</span>
+<span id="cb3-12"><a href="redcap.html#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ends_with</span>(<span class="fu">c</span>(<span class="st">&quot;_is&quot;</span>,<span class="st">&quot;_lo&quot;</span>,<span class="st">&quot;_up&quot;</span>,<span class="st">&quot;_per&quot;</span>))) <span class="co"># I only want index scores, lower and upper CIs and percentile.</span></span>
+<span id="cb3-13"><a href="redcap.html#cb3-13" aria-hidden="true" tabindex="-1"></a>         )   <span class="sc">|&gt;</span> </span>
+<span id="cb3-14"><a href="redcap.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># Omitting IDs with missing data.</span></span>
+<span id="cb3-15"><a href="redcap.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ds, <span class="at">n =</span> <span class="dv">5</span>) <span class="co"># Showing only the first 5 rows</span></span></code></pre></div>
+<p>Further examples and scripts can be found in the <a href="https://github.com/agdamsbo/ENIGMAtrial_R">ENIGMA code repository</a>.</p>
 </div>
 <div id="notes" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Notes<a href="redcap.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
