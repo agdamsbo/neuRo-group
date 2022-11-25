@@ -1,4 +1,4 @@
-# Recommendations {#recom}
+# Recommendations and inspiration {#recom}
 
 Here follows a collection of suggestions on packages, pages and clever solutions
 
@@ -19,3 +19,9 @@ As part of the PhD BioStat course, the teacher, Eric Parner is providing a Data 
 ## On geocomputation
 
 [link](https://geocompr.robinlovelace.net/)
+
+## Inspiration for plots
+
+Data can be visualised in many ways. Deciding on the best plot can be difficult. Here are some sources of insppiration:
+
+*   Cheatsheet on [Grafics Principles](https://github.com/GraphicsPrinciples/CheatSheet/raw/master/NVSCheatSheet.pdf).
