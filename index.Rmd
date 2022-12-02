@@ -28,3 +28,5 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse'
 ), 'packages.bib')
 ```
+
+Last update: *`r format(Sys.Date(), "%d.%b.%Y")`*
