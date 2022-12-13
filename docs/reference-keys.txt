@@ -11,4 +11,8 @@ phd-biostat-course-cheatsheet
 on-geocomputation
 inspiration-for-plots
 on-people-analytics
+sl
+the-book
+stRoke
+install
 literature

@@ -1,0 +1,23 @@
+# Statistacal learning {#sl}
+
+The field of statistical learning or machine learning is increasingly popular.
+
+The PhD School at AU offers courses on applied SL/ML, and here follows just a short introduction.
+
+## The Book
+
+The mandatory book on SL/ML in R is "An introduction to statistical learning with applications in R"[@sohilIntroductionStatisticalLearning2021]. Here is a short review:
+
+
+> "An Introduction to Statistical Learning with Applications in R" is a popular textbook on statistical learning and regression methods. The book is written by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani, all renowned researchers in the field of statistics and machine learning.
+> 
+> The book provides a thorough and rigorous treatment of the topic, making it well-suited for students and practitioners who are looking to gain a deep understanding of the methods used in statistical learning. It covers a wide range of topics, including linear regression, classification, cross-validation, and regularization, and provides a strong foundation in these areas.
+> 
+> One of the standout features of the book is its use of the R programming language to illustrate the concepts discussed. R is a widely-used language in the field of statistics and data analysis, and the authors do an excellent job of showing how to use R to implement the techniques discussed in the book.
+> 
+> Overall, "An Introduction to Statistical Learning with Applications in R" is an excellent resource for anyone looking to learn about statistical learning and regression methods. Its clear explanations and use of R make it a valuable resource for students and practitioners alike."
+> 
+> `r tufte::quote_footer('--- [chatGPT](https://chat.openai.com/chat)')`
+
+Tee book can be [downloaded for free as a PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) and is highly recommended. Also, there is a lecture series on youtube with the authors on the first edition of the book (currently in second edition).
+

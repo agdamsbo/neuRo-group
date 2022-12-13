@@ -16,7 +16,7 @@ description: "This is a reference book on introducing working in R and reference
 
 This book is created and maintained as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.
 
-The book is build using the **bookdown** package[R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
+The book is build using the **bookdown** package[@R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
 ## Source
 

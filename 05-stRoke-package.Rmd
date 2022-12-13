@@ -1,0 +1,12 @@
+# stRoke {#stRoke}
+
+I (andreas) have collected a few useful custom functions in a package, `library(stRoke)`.
+
+The source can be accessed here, and below will follow a few examples on hov to use the package. At the source, documentation is also available.
+
+## Install
+
+```{r stRoke-install, eval=FALSE}
+remotes::install_github("agdamsbo/stRoke")
+```
+
