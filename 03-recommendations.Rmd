@@ -18,6 +18,8 @@ As part of the PhD BioStat course, the teacher, Eric Parner is providing a Data 
 
 ## On geocomputation
 
+Introduction to geocomputational work in R.
+
 [link](https://geocompr.robinlovelace.net/)
 
 ## Inspiration for plots
@@ -32,3 +34,9 @@ A "Handbook of Regression Modeling in People".
 The book is very recent (last update on 19 August 2022), with lots of example code and data. Code examples in both R, Python and Julia. All free and open source languages used in data analytics.
 
 [Read it here.](https://peopleanalytics-regression-book.org/gitbook/index.html)
+
+## Applications of R in Healthcare
+
+[Here is a link](https://htmlpreview.github.io/?https://raw.githubusercontent.com/agdamsbo/HealthcareRbook/master/_book/index.html) to the preliminary book "Applications of R in Healthcare" by Thanh Phan.
+
+It is a thorough introduction to R with advanced use cases.

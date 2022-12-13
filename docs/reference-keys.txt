@@ -11,6 +11,7 @@ phd-biostat-course-cheatsheet
 on-geocomputation
 inspiration-for-plots
 on-people-analytics
+applications-of-r-in-healthcare
 sl
 the-book
 stRoke
