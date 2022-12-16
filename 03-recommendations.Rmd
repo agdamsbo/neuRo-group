@@ -2,6 +2,12 @@
 
 Here follows a collection of suggestions on packages, pages and clever solutions
 
+## Applications of R in Healthcare
+
+This is a very thorough book introducing a very wide range of functions in R, beginning from scratch. The book is written by Thanh Phan (whom Anne has worked with[@behrndtzCanHelicoptersSolve2022]), [and is still a work in progress](https://github.com/GNtem2/HealthcareRbook).
+
+I (andreas) have made a publishable fork of the work, which can be [accessed here](https://agdamsbo.github.io/HealthcareRbook/). Just note that not all examples are working do to missing data sets or references to non-maintained packages.
+
 ## More Advanced R
 
 The Advanced R course at the PhD School at AU is based on this book: [Advanced R Course by Florian Privé](https://privefl.github.io/advr38book/index.html).
@@ -35,8 +41,4 @@ The book is very recent (last update on 19 August 2022), with lots of example co
 
 [Read it here.](https://peopleanalytics-regression-book.org/gitbook/index.html)
 
-## Applications of R in Healthcare
 
-[Here is a link](https://htmlpreview.github.io/?https://raw.githubusercontent.com/agdamsbo/HealthcareRbook/master/_book/index.html) to the preliminary book "Applications of R in Healthcare" by Thanh Phan.
-
-It is a thorough introduction to R with advanced use cases.

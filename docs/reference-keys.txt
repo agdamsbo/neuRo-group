@@ -6,12 +6,12 @@ getting-started
 downloading-data
 notes
 recom
+applications-of-r-in-healthcare
 more-advanced-r
 phd-biostat-course-cheatsheet
 on-geocomputation
 inspiration-for-plots
 on-people-analytics
-applications-of-r-in-healthcare
 sl
 the-book
 stRoke
