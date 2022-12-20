@@ -16,6 +16,8 @@ description: "This is a reference book on introducing working in R and reference
 
 This book is created and maintained as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.
 
+In the group we mainly work in R and use REDCap[@harrisResearchElectronicData2009] [@harrisREDCapConsortiumBuilding2019] for data collection. In this book I will include workflow examples on how to work with data from REDCap in R, but also share tips to buiilding a database in REDCap, a task many PhD-student may only experience once, and hence the individual experience is limited. 
+
 The book is build using the **bookdown** package[@R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
 ## Source
