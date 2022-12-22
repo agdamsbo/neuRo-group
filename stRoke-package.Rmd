@@ -1,0 +1,23 @@
+# stRoke {#stRoke}
+
+The package `library(stRoke)`[@R-stRoke] is a collection of function to help in data management and analysis.
+
+Below are suggestions on how to use some of the functions in your work.
+
+## Install
+
+```{r stRoke-install, eval=FALSE}
+remotes::install_github("agdamsbo/stRoke")
+```
+
+## Events and repeated instruments
+
+The package includes the function `read_redcap_tables()`, which helps in handling the castellated REDCap data set format in projects utilizing events and repeated instruments. In {#workflow}, a structured approached is recommended as per the documentation provided by `library(REDCapR)`[@R-REDCapR]. This is fine, but can sometimes be a little inconvenient. The `read_redcap_tables()` works by wrapping `REDCapR::redcap_read()` and `REDCapRITS::REDCap_split()`followed by a bit of clean-up.
+
+```{r eval=FALSE}
+stRoke::read_redcap_tables(redcap_uri = "https://redcap.au.dk/api/",
+                           token = "YOUR_API_KEY_GOES_HERE",
+                           forms = c("rbans", "mrs"),
+                           fields = c("record_id", "age", "class_toast"))
+```
+

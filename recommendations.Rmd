@@ -41,4 +41,13 @@ The book is very recent (last update on 19 August 2022), with lots of example co
 
 [Read it here.](https://peopleanalytics-regression-book.org/gitbook/index.html)
 
+## Statistacal learning
+
+The field of statistical learning or machine learning is increasingly popular.
+
+The PhD School at AU offers courses on applied SL/ML, and here follows just a short introduction.
+
+The mandatory book on SL/ML in R is "An introduction to statistical learning with applications in R"[@sohilIntroductionStatisticalLearning2021]. Here is a short review:
+
+Tee book can be [downloaded for free as a PDF](https://hastie.su.domains/ISLR2/ISLRv2_website.pdf) and is highly recommended. Also, there is a lecture series on youtube with the authors on the first edition of the book (currently in second edition).
 

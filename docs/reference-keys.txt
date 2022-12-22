@@ -1,7 +1,5 @@
-preamble
-source
 intro
-redcap
+workflow
 getting-started
 downloading-data
 notes
@@ -12,9 +10,9 @@ phd-biostat-course-cheatsheet
 on-geocomputation
 inspiration-for-plots
 on-people-analytics
-sl
-the-book
+statistacal-learning
 stRoke
 install
+events-and-repeated-instruments
 redcap-data
 literature

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 REDCap in R | neuRo reference book</title>
+  <title>Chapter 2 Workflow in data management | neuRo reference book</title>
   <meta name="description" content="This is a reference book on introducing working in R and references for further research work in R. part of the neuRo-group at AUH, DK" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 REDCap in R | neuRo reference book" />
+  <meta property="og:title" content="Chapter 2 Workflow in data management | neuRo reference book" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a reference book on introducing working in R and references for further research work in R. part of the neuRo-group at AUH, DK" />
   <meta name="github-repo" content="agdamsbo/neuRo-group" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 REDCap in R | neuRo reference book" />
+  <meta name="twitter:title" content="Chapter 2 Workflow in data management | neuRo reference book" />
   
   <meta name="twitter:description" content="This is a reference book on introducing working in R and references for further research work in R. part of the neuRo-group at AUH, DK" />
   
@@ -162,11 +162,11 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#source"><i class="fa fa-check"></i>Source</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a></li>
-<li class="chapter" data-level="2" data-path="redcap.html"><a href="redcap.html"><i class="fa fa-check"></i><b>2</b> REDCap in R</a>
+<li class="chapter" data-level="2" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>2</b> Workflow in data management</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="redcap.html"><a href="redcap.html#getting-started"><i class="fa fa-check"></i><b>2.1</b> Getting started</a></li>
-<li class="chapter" data-level="2.2" data-path="redcap.html"><a href="redcap.html#downloading-data"><i class="fa fa-check"></i><b>2.2</b> Downloading data</a></li>
-<li class="chapter" data-level="2.3" data-path="redcap.html"><a href="redcap.html#notes"><i class="fa fa-check"></i><b>2.3</b> Notes</a></li>
+<li class="chapter" data-level="2.1" data-path="workflow.html"><a href="workflow.html#getting-started"><i class="fa fa-check"></i><b>2.1</b> Getting started</a></li>
+<li class="chapter" data-level="2.2" data-path="workflow.html"><a href="workflow.html#downloading-data"><i class="fa fa-check"></i><b>2.2</b> Downloading data</a></li>
+<li class="chapter" data-level="2.3" data-path="workflow.html"><a href="workflow.html#notes"><i class="fa fa-check"></i><b>2.3</b> Notes</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="recom.html"><a href="recom.html"><i class="fa fa-check"></i><b>3</b> Recommendations and inspiration</a>
 <ul>
@@ -181,7 +181,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="stRoke.html"><a href="stRoke.html"><i class="fa fa-check"></i><b>4</b> stRoke</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="stRoke.html"><a href="stRoke.html#install"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
-<li class="chapter" data-level="4.2" data-path="stRoke.html"><a href="stRoke.html#better-handling-of-redcap-events-and-repeated-instruments"><i class="fa fa-check"></i><b>4.2</b> Better handling of REDCap events and repeated instruments</a></li>
+<li class="chapter" data-level="4.2" data-path="stRoke.html"><a href="stRoke.html#events-and-repeated-instruments"><i class="fa fa-check"></i><b>4.2</b> Events and repeated instruments</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="redcap-data.html"><a href="redcap-data.html"><i class="fa fa-check"></i><b>5</b> REDCap</a></li>
 <li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
@@ -207,61 +207,61 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="redcap" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> REDCap in R<a href="redcap.html#redcap" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like <a href="redcap.rm.dk">REDCap</a>) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.</p>
+<div id="workflow" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Workflow in data management<a href="workflow.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Working with data analysis in the research group, and in general it is highly advisable to keep data at a secure server (like <a href="redcap.rm.dk">REDCap</a>) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.</p>
 <p>In the following is a guide to get started working on REDCap data in R using the <a href="https://ouhscbbmc.github.io/REDCapR/">REDCapR-package</a>.<span class="citation">(<a href="#ref-R-REDCapR" role="doc-biblioref">Beasley 2022</a>)</span></p>
 <p>Following the package link provides an extensive description on workflows and functionality. However, sometimes less is more, and so goes.</p>
 <div id="getting-started" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Getting started<a href="redcap.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.1</span> Getting started<a href="workflow.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before you are able to get any data out of REDCap, make sure that you are able to get in. After you are logged in, make sure, that you have permissions to get an API-key. The API-key is a alpha-numeric key used to verify yourself to the REDCap-server, when requesting data export.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="redcap.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REDCapR)</span>
-<span id="cb1-2"><a href="redcap.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the variables &quot;record_id&quot; and &quot;age&quot;.</span></span>
-<span id="cb1-3"><a href="redcap.html#cb1-3" aria-hidden="true" tabindex="-1"></a>ds_some_vars <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
-<span id="cb1-4"><a href="redcap.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span id="cb1-5"><a href="redcap.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
-<span id="cb1-6"><a href="redcap.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields       =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
-<span id="cb1-7"><a href="redcap.html#cb1-7" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data </span>
-<span id="cb1-8"><a href="redcap.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="redcap.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Return only records with IDs of 1 and 4</span></span>
-<span id="cb1-10"><a href="redcap.html#cb1-10" aria-hidden="true" tabindex="-1"></a>ds_some_rows <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
-<span id="cb1-11"><a href="redcap.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span id="cb1-12"><a href="redcap.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
-<span id="cb1-13"><a href="redcap.html#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span>
-<span id="cb1-14"><a href="redcap.html#cb1-14" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="workflow.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REDCapR)</span>
+<span id="cb1-2"><a href="workflow.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the variables &quot;record_id&quot; and &quot;age&quot;.</span></span>
+<span id="cb1-3"><a href="workflow.html#cb1-3" aria-hidden="true" tabindex="-1"></a>ds_some_vars <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb1-4"><a href="workflow.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb1-5"><a href="workflow.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb1-6"><a href="workflow.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">fields       =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb1-7"><a href="workflow.html#cb1-7" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data </span>
+<span id="cb1-8"><a href="workflow.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="workflow.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Return only records with IDs of 1 and 4</span></span>
+<span id="cb1-10"><a href="workflow.html#cb1-10" aria-hidden="true" tabindex="-1"></a>ds_some_rows <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb1-11"><a href="workflow.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb1-12"><a href="workflow.html#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb1-13"><a href="workflow.html#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb1-14"><a href="workflow.html#cb1-14" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data</span></code></pre></div>
 <p>To get a full list of available variable names, you can either go through the codebook on REDCap, or you can try the following, but be aware, that the resulting vector of variable names can get a little long and confusing.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="redcap.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns a vector of names of all accessible variables.</span></span>
-<span id="cb2-2"><a href="redcap.html#cb2-2" aria-hidden="true" tabindex="-1"></a>variable_names <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
-<span id="cb2-3"><a href="redcap.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span id="cb2-4"><a href="redcap.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span></span>
-<span id="cb2-5"><a href="redcap.html#cb2-5" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
-<span id="cb2-6"><a href="redcap.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="workflow.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns a vector of names of all accessible variables.</span></span>
+<span id="cb2-2"><a href="workflow.html#cb2-2" aria-hidden="true" tabindex="-1"></a>variable_names <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb2-3"><a href="workflow.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb2-4"><a href="workflow.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span></span>
+<span id="cb2-5"><a href="workflow.html#cb2-5" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="workflow.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div>
 <p>Note that the ’ |&gt; ’ is the pipe-operator native to R since version 4.1. It works similarly to the ’ %&gt;% ’ from the <a href="https://tidyverse.tidyverse.org"><em>tidyverse</em></a>.</p>
 </div>
 <div id="downloading-data" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Downloading data<a href="redcap.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.2</span> Downloading data<a href="workflow.html#downloading-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When using a longitudinal project design or the “repeated instruments” functionality within REDcap, the dataset will be structured in “long” format with several rows for each ID (one for each “event” and “instance” of repeated instrument).</p>
 <p>Depending on the analysis, the data set can be converted to a “wide” format, with only one row per ID. The <code>pivot_wider()</code> from the <code>tidyr pakckage</code> can be used, but the most straight-forward approach is to only download the data needed and use the <code>join_left()</code> function to merge data. When handling data from repeated instruments the <code>pivot_wider()</code> can be used first.</p>
 <p>Here is an example on how to export data on RBANS and cleaning the data for plotting.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="redcap.html#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
-<span id="cb3-2"><a href="redcap.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
-<span id="cb3-3"><a href="redcap.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
-<span id="cb3-4"><a href="redcap.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>), <span class="co"># Downloading data from ID 1 to 35.</span></span>
-<span id="cb3-5"><a href="redcap.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">forms        =</span> <span class="st">&quot;rbans&quot;</span>, <span class="co"># Downloading only the RBANS instrument</span></span>
-<span id="cb3-6"><a href="redcap.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">event        =</span> <span class="fu">c</span>(<span class="st">&quot;3_months_arm_1&quot;</span>, <span class="co"># Specifying only to download 3 and 12 months data</span></span>
-<span id="cb3-7"><a href="redcap.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;12_months_arm_1&quot;</span>)</span>
-<span id="cb3-8"><a href="redcap.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
-<span id="cb3-9"><a href="redcap.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( <span class="co"># Selecting variables to keep</span></span>
-<span id="cb3-10"><a href="redcap.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>,</span>
-<span id="cb3-11"><a href="redcap.html#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;redcap_event_name&quot;</span>,</span>
-<span id="cb3-12"><a href="redcap.html#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ends_with</span>(<span class="fu">c</span>(<span class="st">&quot;_is&quot;</span>,<span class="st">&quot;_lo&quot;</span>,<span class="st">&quot;_up&quot;</span>,<span class="st">&quot;_per&quot;</span>))) <span class="co"># I only want index scores, lower and upper CIs and percentile.</span></span>
-<span id="cb3-13"><a href="redcap.html#cb3-13" aria-hidden="true" tabindex="-1"></a>         )   <span class="sc">|&gt;</span> </span>
-<span id="cb3-14"><a href="redcap.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># Omitting IDs with missing data.</span></span>
-<span id="cb3-15"><a href="redcap.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ds, <span class="at">n =</span> <span class="dv">5</span>) <span class="co"># Showing only the first 5 rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="workflow.html#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">redcap_read</span>(</span>
+<span id="cb3-2"><a href="workflow.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">redcap_uri   =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,  <span class="co"># This is the address for projects at the AU-server</span></span>
+<span id="cb3-3"><a href="workflow.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">token        =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb3-4"><a href="workflow.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">records      =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">35</span>), <span class="co"># Downloading data from ID 1 to 35.</span></span>
+<span id="cb3-5"><a href="workflow.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">forms        =</span> <span class="st">&quot;rbans&quot;</span>, <span class="co"># Downloading only the RBANS instrument</span></span>
+<span id="cb3-6"><a href="workflow.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">event        =</span> <span class="fu">c</span>(<span class="st">&quot;3_months_arm_1&quot;</span>, <span class="co"># Specifying only to download 3 and 12 months data</span></span>
+<span id="cb3-7"><a href="workflow.html#cb3-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;12_months_arm_1&quot;</span>)</span>
+<span id="cb3-8"><a href="workflow.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>data <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="workflow.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( <span class="co"># Selecting variables to keep</span></span>
+<span id="cb3-10"><a href="workflow.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>,</span>
+<span id="cb3-11"><a href="workflow.html#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;redcap_event_name&quot;</span>,</span>
+<span id="cb3-12"><a href="workflow.html#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ends_with</span>(<span class="fu">c</span>(<span class="st">&quot;_is&quot;</span>,<span class="st">&quot;_lo&quot;</span>,<span class="st">&quot;_up&quot;</span>,<span class="st">&quot;_per&quot;</span>))) <span class="co"># I only want index scores, lower and upper CIs and percentile.</span></span>
+<span id="cb3-13"><a href="workflow.html#cb3-13" aria-hidden="true" tabindex="-1"></a>         )   <span class="sc">|&gt;</span> </span>
+<span id="cb3-14"><a href="workflow.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co"># Omitting IDs with missing data.</span></span>
+<span id="cb3-15"><a href="workflow.html#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ds, <span class="at">n =</span> <span class="dv">5</span>) <span class="co"># Showing only the first 5 rows</span></span></code></pre></div>
 <p>Further examples and scripts can be found in the <a href="https://github.com/agdamsbo/ENIGMAtrial_R">ENIGMA code repository</a>.</p>
 </div>
 <div id="notes" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Notes<a href="redcap.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.3</span> Notes<a href="workflow.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As a standard only export privileges should be given to an API-key and only to de-identified data.</p>
 <p>Full access with both read and write access is possible but should be highly restricted.</p>
 <p>API-keys should be regenerated regularly.</p>

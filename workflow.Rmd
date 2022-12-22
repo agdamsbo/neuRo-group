@@ -1,6 +1,6 @@
-# REDCap in R {#redcap}
+# Workflow in data management {#workflow}
 
-Working with data analysis in th egroup, and in general it is highly advisable to keep data at a secure server (like [REDCap](redcap.rm.dk)) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.
+Working with data analysis in the research group, and in general it is highly advisable to keep data at a secure server (like [REDCap](redcap.rm.dk)) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.
 
 In the following is a guide to get started working on REDCap data in R using the [REDCapR-package](https://ouhscbbmc.github.io/REDCapR/).[@R-REDCapR]
 

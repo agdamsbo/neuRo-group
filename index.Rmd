@@ -1,7 +1,7 @@
 ---
 title: "neuRo reference book"
 author: "Andreas Gammelgaard Damsbo"
-date: "`r Sys.Date()`"
+date: "Last render: `r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -12,23 +12,21 @@ github-repo: agdamsbo/neuRo-group
 description: "This is a reference book on introducing working in R and references for further research work in R. part of the neuRo-group at AUH, DK"
 ---
 
-# Preamble
+# Preamble {-}
 
-This book is created and maintained as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.
+This book is created and maintained by Andreas G Damsbo([GitHub](https://github.com/agdamsbo), [ORCiD](https://orcid.org/my-orcid?orcid=0000-0002-7559-1154), [email](mailto:andrlr@rm.dk)), as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.
 
 In the group we mainly work in R and use REDCap[@harrisResearchElectronicData2009] [@harrisREDCapConsortiumBuilding2019] for data collection. In this book I will include workflow examples on how to work with data from REDCap in R, but also share tips to buiilding a database in REDCap, a task many PhD-student may only experience once, and hence the individual experience is limited. 
 
 The book is build using the **bookdown** package[@R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
-## Source
+## Source {-}
 
-The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group). You are welcome to contribute through comments or PRs. Or you can write an [email](mailto:andrlr@rm.dk) to the author and maintainer.
+The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group). You are welcome to contribute through comments, PRs or you can write an [email](mailto:andrlr@rm.dk) to the author.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse', 'stRoke', "REDCapRITS"
 ), 'packages.bib')
 ```
-
-Last update: *`r format(Sys.Date(), "%d.%b.%Y")`*
