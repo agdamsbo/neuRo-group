@@ -164,9 +164,8 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a></li>
 <li class="chapter" data-level="2" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>2</b> Workflow in data management</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="workflow.html"><a href="workflow.html#getting-started"><i class="fa fa-check"></i><b>2.1</b> Getting started</a></li>
+<li class="chapter" data-level="2.1" data-path="workflow.html"><a href="workflow.html#getting-access"><i class="fa fa-check"></i><b>2.1</b> Getting access</a></li>
 <li class="chapter" data-level="2.2" data-path="workflow.html"><a href="workflow.html#downloading-data"><i class="fa fa-check"></i><b>2.2</b> Downloading data</a></li>
-<li class="chapter" data-level="2.3" data-path="workflow.html"><a href="workflow.html#notes"><i class="fa fa-check"></i><b>2.3</b> Notes</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="recom.html"><a href="recom.html"><i class="fa fa-check"></i><b>3</b> Recommendations and inspiration</a>
 <ul>
@@ -183,7 +182,11 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="stRoke.html"><a href="stRoke.html#install"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
 <li class="chapter" data-level="4.2" data-path="stRoke.html"><a href="stRoke.html#events-and-repeated-instruments"><i class="fa fa-check"></i><b>4.2</b> Events and repeated instruments</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="redcap-data.html"><a href="redcap-data.html"><i class="fa fa-check"></i><b>5</b> REDCap</a></li>
+<li class="chapter" data-level="5" data-path="redcap-data.html"><a href="redcap-data.html"><i class="fa fa-check"></i><b>5</b> REDCap</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="redcap-data.html"><a href="redcap-data.html#building-a-data-base"><i class="fa fa-check"></i><b>5.1</b> Building a data base</a></li>
+<li class="chapter" data-level="5.2" data-path="redcap-data.html"><a href="redcap-data.html#downloading-data-1"><i class="fa fa-check"></i><b>5.2</b> Downloading data</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/agdamsbo/neuRo-group">Source on GitHub</a></li>
@@ -213,15 +216,15 @@ div.csl-indent {
 <p>Below are suggestions on how to use some of the functions in your work.</p>
 <div id="install" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Install<a href="stRoke.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="stRoke.html#cb4-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;agdamsbo/stRoke&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="stRoke.html#cb5-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;agdamsbo/stRoke&quot;</span>)</span></code></pre></div>
 </div>
 <div id="events-and-repeated-instruments" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Events and repeated instruments<a href="stRoke.html#events-and-repeated-instruments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The package includes the function <code>read_redcap_tables()</code>, which helps in handling the castellated REDCap data set format in projects utilizing events and repeated instruments. In {#workflow}, a structured approached is recommended as per the documentation provided by <code>library(REDCapR)</code><span class="citation">(<a href="#ref-R-REDCapR" role="doc-biblioref">Beasley 2022</a>)</span>. This is fine, but can sometimes be a little inconvenient. The <code>read_redcap_tables()</code> works by wrapping <code>REDCapR::redcap_read()</code> and <code>REDCapRITS::REDCap_split()</code>followed by a bit of clean-up.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="stRoke.html#cb5-1" aria-hidden="true" tabindex="-1"></a>stRoke<span class="sc">::</span><span class="fu">read_redcap_tables</span>(<span class="at">redcap_uri =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,</span>
-<span id="cb5-2"><a href="stRoke.html#cb5-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">token =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
-<span id="cb5-3"><a href="stRoke.html#cb5-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="fu">c</span>(<span class="st">&quot;rbans&quot;</span>, <span class="st">&quot;mrs&quot;</span>),</span>
-<span id="cb5-4"><a href="stRoke.html#cb5-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;class_toast&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="stRoke.html#cb6-1" aria-hidden="true" tabindex="-1"></a>stRoke<span class="sc">::</span><span class="fu">read_redcap_tables</span>(<span class="at">redcap_uri =</span> <span class="st">&quot;https://redcap.au.dk/api/&quot;</span>,</span>
+<span id="cb6-2"><a href="stRoke.html#cb6-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">token =</span> <span class="st">&quot;YOUR_API_KEY_GOES_HERE&quot;</span>,</span>
+<span id="cb6-3"><a href="stRoke.html#cb6-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="fu">c</span>(<span class="st">&quot;rbans&quot;</span>, <span class="st">&quot;mrs&quot;</span>),</span>
+<span id="cb6-4"><a href="stRoke.html#cb6-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;class_toast&quot;</span>))</span></code></pre></div>
 
 </div>
 </div>

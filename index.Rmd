@@ -27,6 +27,6 @@ The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group)
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse', 'stRoke', "REDCapRITS"
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'REDCapR', 'tidyverse', 'stRoke', "REDCapRITS","keyring"
 ), 'packages.bib')
 ```

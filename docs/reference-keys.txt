@@ -1,8 +1,7 @@
 intro
 workflow
-getting-started
+getting-access
 downloading-data
-notes
 recom
 applications-of-r-in-healthcare
 more-advanced-r
@@ -15,4 +14,6 @@ stRoke
 install
 events-and-repeated-instruments
 redcap-data
+building-a-data-base
+downloading-data-1
 literature
