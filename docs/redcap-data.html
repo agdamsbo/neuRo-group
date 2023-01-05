@@ -193,6 +193,10 @@ div.csl-indent {
 <li class="chapter" data-level="6.2" data-path="redcap-data.html"><a href="redcap-data.html#redcap-dataset"><i class="fa fa-check"></i><b>6.2</b> Setting up a database from a dataset</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="redcap-data.html"><a href="redcap-data.html#create-a-data-dictionary"><i class="fa fa-check"></i><b>6.2.1</b> Create a data dictionary</a></li>
+<li class="chapter" data-level="6.2.2" data-path="redcap-data.html"><a href="redcap-data.html#specify-variable-names-etc."><i class="fa fa-check"></i><b>6.2.2</b> Specify variable names etc.</a></li>
+<li class="chapter" data-level="6.2.3" data-path="redcap-data.html"><a href="redcap-data.html#format-choices"><i class="fa fa-check"></i><b>6.2.3</b> Format choices</a></li>
+<li class="chapter" data-level="6.2.4" data-path="redcap-data.html"><a href="redcap-data.html#merging-and-data-validation"><i class="fa fa-check"></i><b>6.2.4</b> Merging and data validation</a></li>
+<li class="chapter" data-level="6.2.5" data-path="redcap-data.html"><a href="redcap-data.html#upload-the-datadictionary"><i class="fa fa-check"></i><b>6.2.5</b> Upload the DataDictionary</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>7</b> Literature</a></li>
@@ -231,25 +235,29 @@ div.csl-indent {
 <div id="create-a-data-dictionary" class="section level3 hasAnchor" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Create a data dictionary<a href="redcap-data.html#create-a-data-dictionary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Copy and run the following to create a DataDictionary draft.</p>
-<p>Change the <code>var_name</code> vector to the variable names of your own project and the same for <code>instrument</code>. To fill out the rest, open the .ods file in a visual editor as LibreOffice go manual.</p>
+<p>Change the <code>var_name</code> vector to the variable names of your own project and the same for <code>instrument</code>. Then export the DataDictionary draft and open the .ods file in a visual editor as LibreOffice.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="redcap-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(readODS)</span></code></pre></div>
 <pre><code>## Loading required package: readODS</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="redcap-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>var_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>,<span class="fu">colnames</span>(stRoke<span class="sc">::</span>talos))</span>
-<span id="cb9-2"><a href="redcap-data.html#cb9-2" aria-hidden="true" tabindex="-1"></a>instrument <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;incl&quot;</span>,<span class="st">&quot;incl&quot;</span>,<span class="st">&quot;follow1&quot;</span>,<span class="st">&quot;follow6&quot;</span>,<span class="st">&quot;incl&quot;</span>,<span class="st">&quot;incl&quot;</span>,<span class="st">&quot;incl&quot;</span>)</span>
-<span id="cb9-3"><a href="redcap-data.html#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="redcap-data.html#cb9-4" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Variable...Field.Name=</span>var_name,</span>
-<span id="cb9-5"><a href="redcap-data.html#cb9-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">Form.Name=</span>instrument,</span>
-<span id="cb9-6"><a href="redcap-data.html#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">Field.Type =</span> <span class="st">&quot;text&quot;</span>,</span>
-<span id="cb9-7"><a href="redcap-data.html#cb9-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">Choices..Calculations..OR.Slider.Labels =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb9-8"><a href="redcap-data.html#cb9-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">Field.Label =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="redcap-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Naming the different variables (&quot;record_id&quot; is the default name for the record number)</span></span>
+<span id="cb9-2"><a href="redcap-data.html#cb9-2" aria-hidden="true" tabindex="-1"></a>var_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>,<span class="st">&quot;base_date&quot;</span>,<span class="st">&quot;hypertension&quot;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;cohabitation&quot;</span>,<span class="st">&quot;mrs_assessed&quot;</span>,<span class="st">&quot;mrs_date&quot;</span>,<span class="st">&quot;mrs_score&quot;</span>) </span>
+<span id="cb9-3"><a href="redcap-data.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instrument/form name corresponding to the variables</span></span>
+<span id="cb9-4"><a href="redcap-data.html#cb9-4" aria-hidden="true" tabindex="-1"></a>instrument <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;base&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;mrs&quot;</span>,<span class="st">&quot;mrs&quot;</span>,<span class="st">&quot;mrs&quot;</span>)</span>
+<span id="cb9-5"><a href="redcap-data.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="redcap-data.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining the vectors with default data in data frame</span></span>
+<span id="cb9-7"><a href="redcap-data.html#cb9-7" aria-hidden="true" tabindex="-1"></a>(dd_draft <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Variable...Field.Name=</span>var_name,</span>
+<span id="cb9-8"><a href="redcap-data.html#cb9-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">Form.Name=</span>instrument,</span>
+<span id="cb9-9"><a href="redcap-data.html#cb9-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">Field.Type =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb9-10"><a href="redcap-data.html#cb9-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">Choices..Calculations..OR.Slider.Labels =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb9-11"><a href="redcap-data.html#cb9-11" aria-hidden="true" tabindex="-1"></a>           <span class="at">Field.Label =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <pre><code>##   Variable...Field.Name Form.Name Field.Type
-## 1             record_id      incl       text
-## 2                rtreat      incl       text
-## 3                 mrs_1   follow1       text
-## 4                 mrs_6   follow6       text
-## 5          hypertension      incl       text
-## 6              diabetes      incl       text
-## 7                 civil      incl       text
+## 1             record_id      base       text
+## 2             base_date      base       text
+## 3          hypertension      base       text
+## 4              diabetes      base       text
+## 5          cohabitation      base       text
+## 6          mrs_assessed       mrs       text
+## 7              mrs_date       mrs       text
+## 8             mrs_score       mrs       text
 ##   Choices..Calculations..OR.Slider.Labels Field.Label
 ## 1                                                    
 ## 2                                                    
@@ -257,53 +265,1199 @@ div.csl-indent {
 ## 4                                                    
 ## 5                                                    
 ## 6                                                    
-## 7</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="redcap-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_ods</span>(df,</span>
-<span id="cb11-2"><a href="redcap-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">path =</span> <span class="st">&quot;dd_draft.ods&quot;</span>)</span></code></pre></div>
+## 7                                                    
+## 8</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="redcap-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exporting for manual manipulation</span></span>
+<span id="cb11-2"><a href="redcap-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_ods</span>(dd_draft,</span>
+<span id="cb11-3"><a href="redcap-data.html#cb11-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">path =</span> <span class="st">&quot;dd_draft.ods&quot;</span>)</span></code></pre></div>
+</div>
+<div id="specify-variable-names-etc." class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Specify variable names etc.<a href="redcap-data.html#specify-variable-names-etc." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Have a look at the demonstration file below for inspiration.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="redcap-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">read.csv</span>(<span class="st">&quot;./redcap/REDCapDataDictonaryDemo.csv&quot;</span>))</span></code></pre></div>
-<pre><code>##   Variable...Field.Name    Form.Name              Section.Header Field.Type
-## 1              study_id demographics                                   text
-## 2         date_enrolled demographics Demographic Characteristics       text
-## 3            first_name demographics                                   text
-## 4             last_name demographics                                   text
-## 5               address demographics         Contact Information      notes
-## 6           telephone_1 demographics                                   text
-##                   Field.Label Choices..Calculations..OR.Slider.Labels
-## 1                    Study ID                                        
-## 2 Date subject signed consent                                        
-## 3                  First Name                                        
-## 4                   Last Name                                        
-## 5    Street, City, State, ZIP                                        
-## 6                Phone number                                        
-##          Field.Note Text.Validation.Type.OR.Show.Slider.Number
-## 1                                                             
-## 2        YYYY-MM-DD                                       date
-## 3                                                             
-## 4                                                             
-## 5                                                             
-## 6 Include Area Code                                      phone
-##   Text.Validation.Min Text.Validation.Max Identifier.
-## 1                  NA                  NA            
-## 2                  NA                  NA            
-## 3                  NA                  NA           y
-## 4                  NA                  NA           y
-## 5                  NA                  NA           y
-## 6                  NA                  NA           y
-##   Branching.Logic..Show.field.only.if.... Required.Field. Custom.Alignment
-## 1                                                                       NA
-## 2                                                                       NA
-## 3                                                                       NA
-## 4                                                                       NA
-## 5                                                                       NA
-## 6                                                                       NA
-##   Question.Number..surveys.only. Matrix.Group.Name
-## 1                             NA                  
-## 2                             NA                  
-## 3                             NA                  
-## 4                             NA                  
-## 5                             NA                  
-## 6                             NA</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="redcap-data.html#cb12-1" aria-hidden="true" tabindex="-1"></a>(dd_demo <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;./redcap/REDCapDataDictonaryDemo.csv&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>() <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="usqhwbdobb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#usqhwbdobb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#usqhwbdobb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#usqhwbdobb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#usqhwbdobb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#usqhwbdobb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#usqhwbdobb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#usqhwbdobb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#usqhwbdobb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#usqhwbdobb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#usqhwbdobb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#usqhwbdobb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#usqhwbdobb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#usqhwbdobb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#usqhwbdobb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#usqhwbdobb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#usqhwbdobb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#usqhwbdobb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#usqhwbdobb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#usqhwbdobb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#usqhwbdobb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#usqhwbdobb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#usqhwbdobb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#usqhwbdobb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#usqhwbdobb .gt_left {
+  text-align: left;
+}
+
+#usqhwbdobb .gt_center {
+  text-align: center;
+}
+
+#usqhwbdobb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#usqhwbdobb .gt_font_normal {
+  font-weight: normal;
+}
+
+#usqhwbdobb .gt_font_bold {
+  font-weight: bold;
+}
+
+#usqhwbdobb .gt_font_italic {
+  font-style: italic;
+}
+
+#usqhwbdobb .gt_super {
+  font-size: 65%;
+}
+
+#usqhwbdobb .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#usqhwbdobb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#usqhwbdobb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#usqhwbdobb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#usqhwbdobb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#usqhwbdobb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#usqhwbdobb .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable...Field.Name">Variable...Field.Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Form.Name">Form.Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Section.Header">Section.Header</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Field.Type">Field.Type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Field.Label">Field.Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Choices..Calculations..OR.Slider.Labels">Choices..Calculations..OR.Slider.Labels</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Field.Note">Field.Note</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Text.Validation.Type.OR.Show.Slider.Number">Text.Validation.Type.OR.Show.Slider.Number</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Text.Validation.Min">Text.Validation.Min</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Text.Validation.Max">Text.Validation.Max</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Identifier.">Identifier.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Branching.Logic..Show.field.only.if....">Branching.Logic..Show.field.only.if....</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Required.Field.">Required.Field.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Custom.Alignment">Custom.Alignment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Question.Number..surveys.only.">Question.Number..surveys.only.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Matrix.Group.Name">Matrix.Group.Name</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">study_id</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left"></td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Study ID</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left"></td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">date_enrolled</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left">Demographic Characteristics</td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Date subject signed consent</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left">YYYY-MM-DD</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left">date</td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left"></td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">first_name</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left"></td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">First Name</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left">y</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">last_name</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left"></td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Last Name</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left">y</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">address</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left">Contact Information</td>
+<td headers="Field.Type" class="gt_row gt_left">notes</td>
+<td headers="Field.Label" class="gt_row gt_left">Street, City, State, ZIP</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left"></td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left">y</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">telephone_1</td>
+<td headers="Form.Name" class="gt_row gt_left">demographics</td>
+<td headers="Section.Header" class="gt_row gt_left"></td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Phone number</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_right"></td>
+<td headers="Field.Note" class="gt_row gt_left">Include Area Code</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_left">phone</td>
+<td headers="Text.Validation.Min" class="gt_row gt_right">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_right">NA</td>
+<td headers="Identifier." class="gt_row gt_left">y</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_right"></td>
+<td headers="Required.Field." class="gt_row gt_right"></td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_right"></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Open the exported file “dd_draft.ods”.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="redcap-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Opens file with standard program</span></span>
+<span id="cb13-2"><a href="redcap-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system2</span>(<span class="st">&quot;open&quot;</span>, <span class="st">&quot;dd_draft.ods&quot;</span>)</span></code></pre></div>
+<p>Type or paste the needed information manually, save the file with a new name (I did “dd_draft_adds.ods”) and load it again.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="redcap-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a>(dd <span class="ot">&lt;-</span> <span class="fu">read_ods</span>(<span class="st">&quot;dd_draft_adds.ods&quot;</span>))</span></code></pre></div>
+<pre><code>##   Variable...Field.Name Form.Name Field.Type
+## 1             record_id      base       text
+## 2             base_date      base       text
+## 3          hypertension      base      radio
+## 4              diabetes      base      radio
+## 5          cohabitation      base      radio
+## 6          mrs_assessed       mrs      radio
+## 7              mrs_date       mrs       text
+## 8             mrs_score       mrs      radio
+##   Choices..Calculations..OR.Slider.Labels     Field.Label
+## 1                                    &lt;NA&gt;              ID
+## 2                                    &lt;NA&gt;  Inclusion date
+## 3                                 Yes, No    Hypertension
+## 4                                 Yes, No        Diabetes
+## 5                                 Yes, No    Cohabitation
+## 6                                 Yes, No         Assesed
+## 7                                    &lt;NA&gt; Assessment date
+## 8                     0, 1, 2, 3, 4, 5, 6       mRS score</code></pre>
+</div>
+<div id="format-choices" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Format choices<a href="redcap-data.html#format-choices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Note the different <em>Field.Type’s</em> used and <em>Choices..</em>. , called labels. Each label will have a raw value. And for each of these I will also ad an “Unknown” with a artificial value of 99. This is performed with a small script.</p>
+<p>For radio buttons, I have written the different options to choose from. For variables with a score to choose from, I have written the scores, and these variables and only these variables are named something with “_score”. Variables with binary or other types of outcome, I have written the label.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="redcap-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I enjoy thoughtful variable naming</span></span>
+<span id="cb16-2"><a href="redcap-data.html#cb16-2" aria-hidden="true" tabindex="-1"></a>var_bin <span class="ot">&lt;-</span> dd<span class="sc">$</span>Field.Type<span class="sc">==</span><span class="st">&quot;radio&quot;</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;_score&quot;</span>, dd<span class="sc">$</span>Variable...Field.Name)</span>
+<span id="cb16-3"><a href="redcap-data.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="redcap-data.html#cb16-4" aria-hidden="true" tabindex="-1"></a>choices_bin <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(dd<span class="sc">$</span>Choices..Calculations..OR.Slider.Labels[var_bin], <span class="at">split =</span> <span class="st">&quot;, &quot;</span>),<span class="cf">function</span>(i){</span>
+<span id="cb16-5"><a href="redcap-data.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="fu">paste0</span>(<span class="fu">c</span>(<span class="fu">seq_len</span>(<span class="fu">length</span>(i)),<span class="st">&quot;99&quot;</span>), <span class="st">&quot;,&quot;</span>),<span class="fu">c</span>(i,<span class="st">&quot;Unknown&quot;</span>),<span class="at">collapse =</span> <span class="st">&quot; | &quot;</span>)</span>
+<span id="cb16-6"><a href="redcap-data.html#cb16-6" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb16-7"><a href="redcap-data.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="redcap-data.html#cb16-8" aria-hidden="true" tabindex="-1"></a>dd<span class="sc">$</span>Choices..Calculations..OR.Slider.Labels[var_bin] <span class="ot">&lt;-</span> choices_bin</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="redcap-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a>var_score <span class="ot">&lt;-</span> dd<span class="sc">$</span>Field.Type<span class="sc">==</span><span class="st">&quot;radio&quot;</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(<span class="st">&quot;_score&quot;</span>, dd<span class="sc">$</span>Variable...Field.Name)</span>
+<span id="cb17-2"><a href="redcap-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="redcap-data.html#cb17-3" aria-hidden="true" tabindex="-1"></a>choices_score <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="fu">strsplit</span>(dd<span class="sc">$</span>Choices..Calculations..OR.Slider.Labels[var_score], <span class="at">split =</span> <span class="st">&quot;, &quot;</span>),<span class="cf">function</span>(i){</span>
+<span id="cb17-4"><a href="redcap-data.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="fu">paste0</span>(i, <span class="st">&quot;,&quot;</span>),i,<span class="at">collapse =</span> <span class="st">&quot; | &quot;</span>)</span>
+<span id="cb17-5"><a href="redcap-data.html#cb17-5" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb17-6"><a href="redcap-data.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="redcap-data.html#cb17-7" aria-hidden="true" tabindex="-1"></a>dd<span class="sc">$</span>Choices..Calculations..OR.Slider.Labels[var_score] <span class="ot">&lt;-</span> choices_score</span></code></pre></div>
+<p>Have a look at the results for now.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="redcap-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a>dd</span></code></pre></div>
+<pre><code>##   Variable...Field.Name Form.Name Field.Type
+## 1             record_id      base       text
+## 2             base_date      base       text
+## 3          hypertension      base      radio
+## 4              diabetes      base      radio
+## 5          cohabitation      base      radio
+## 6          mrs_assessed       mrs      radio
+## 7              mrs_date       mrs       text
+## 8             mrs_score       mrs      radio
+##          Choices..Calculations..OR.Slider.Labels     Field.Label
+## 1                                           &lt;NA&gt;              ID
+## 2                                           &lt;NA&gt;  Inclusion date
+## 3                   1, Yes | 2, No | 99, Unknown    Hypertension
+## 4                   1, Yes | 2, No | 99, Unknown        Diabetes
+## 5                   1, Yes | 2, No | 99, Unknown    Cohabitation
+## 6                   1, Yes | 2, No | 99, Unknown         Assesed
+## 7                                           &lt;NA&gt; Assessment date
+## 8 0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6       mRS score</code></pre>
+</div>
+<div id="merging-and-data-validation" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Merging and data validation<a href="redcap-data.html#merging-and-data-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Merging with all needed columns from the DataDictionary demo.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="redcap-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>demo_names <span class="ot">&lt;-</span> <span class="fu">colnames</span>(dd_demo)</span>
+<span id="cb20-2"><a href="redcap-data.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="redcap-data.html#cb20-3" aria-hidden="true" tabindex="-1"></a>col_miss <span class="ot">&lt;-</span> demo_names[<span class="sc">!</span>demo_names <span class="sc">%in%</span> <span class="fu">colnames</span>(dd)]</span>
+<span id="cb20-4"><a href="redcap-data.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="redcap-data.html#cb20-5" aria-hidden="true" tabindex="-1"></a>df_miss <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="fu">nrow</span>(dd), <span class="at">ncol=</span><span class="fu">length</span>(col_miss)))</span>
+<span id="cb20-6"><a href="redcap-data.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df_miss) <span class="ot">&lt;-</span> col_miss</span>
+<span id="cb20-7"><a href="redcap-data.html#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="redcap-data.html#cb20-8" aria-hidden="true" tabindex="-1"></a>(dd_upload <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dd,df_miss)[demo_names]) <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="kdjsolzisz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#kdjsolzisz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kdjsolzisz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kdjsolzisz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kdjsolzisz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kdjsolzisz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kdjsolzisz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kdjsolzisz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kdjsolzisz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kdjsolzisz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kdjsolzisz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kdjsolzisz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kdjsolzisz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kdjsolzisz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kdjsolzisz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kdjsolzisz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kdjsolzisz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kdjsolzisz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kdjsolzisz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kdjsolzisz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kdjsolzisz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kdjsolzisz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kdjsolzisz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kdjsolzisz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kdjsolzisz .gt_left {
+  text-align: left;
+}
+
+#kdjsolzisz .gt_center {
+  text-align: center;
+}
+
+#kdjsolzisz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kdjsolzisz .gt_font_normal {
+  font-weight: normal;
+}
+
+#kdjsolzisz .gt_font_bold {
+  font-weight: bold;
+}
+
+#kdjsolzisz .gt_font_italic {
+  font-style: italic;
+}
+
+#kdjsolzisz .gt_super {
+  font-size: 65%;
+}
+
+#kdjsolzisz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#kdjsolzisz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kdjsolzisz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kdjsolzisz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kdjsolzisz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kdjsolzisz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kdjsolzisz .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable...Field.Name">Variable...Field.Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Form.Name">Form.Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Section.Header">Section.Header</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Field.Type">Field.Type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Field.Label">Field.Label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Choices..Calculations..OR.Slider.Labels">Choices..Calculations..OR.Slider.Labels</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Field.Note">Field.Note</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Text.Validation.Type.OR.Show.Slider.Number">Text.Validation.Type.OR.Show.Slider.Number</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Text.Validation.Min">Text.Validation.Min</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Text.Validation.Max">Text.Validation.Max</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Identifier.">Identifier.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Branching.Logic..Show.field.only.if....">Branching.Logic..Show.field.only.if....</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Required.Field.">Required.Field.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Custom.Alignment">Custom.Alignment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Question.Number..surveys.only.">Question.Number..surveys.only.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Matrix.Group.Name">Matrix.Group.Name</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">record_id</td>
+<td headers="Form.Name" class="gt_row gt_left">base</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">ID</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">NA</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">base_date</td>
+<td headers="Form.Name" class="gt_row gt_left">base</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Inclusion date</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">NA</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">hypertension</td>
+<td headers="Form.Name" class="gt_row gt_left">base</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">radio</td>
+<td headers="Field.Label" class="gt_row gt_left">Hypertension</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">1, Yes | 2, No | 99, Unknown</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">diabetes</td>
+<td headers="Form.Name" class="gt_row gt_left">base</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">radio</td>
+<td headers="Field.Label" class="gt_row gt_left">Diabetes</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">1, Yes | 2, No | 99, Unknown</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">cohabitation</td>
+<td headers="Form.Name" class="gt_row gt_left">base</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">radio</td>
+<td headers="Field.Label" class="gt_row gt_left">Cohabitation</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">1, Yes | 2, No | 99, Unknown</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">mrs_assessed</td>
+<td headers="Form.Name" class="gt_row gt_left">mrs</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">radio</td>
+<td headers="Field.Label" class="gt_row gt_left">Assesed</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">1, Yes | 2, No | 99, Unknown</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">mrs_date</td>
+<td headers="Form.Name" class="gt_row gt_left">mrs</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">text</td>
+<td headers="Field.Label" class="gt_row gt_left">Assessment date</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">NA</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Variable...Field.Name" class="gt_row gt_left">mrs_score</td>
+<td headers="Form.Name" class="gt_row gt_left">mrs</td>
+<td headers="Section.Header" class="gt_row gt_center">NA</td>
+<td headers="Field.Type" class="gt_row gt_left">radio</td>
+<td headers="Field.Label" class="gt_row gt_left">mRS score</td>
+<td headers="Choices..Calculations..OR.Slider.Labels" class="gt_row gt_left">0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5 | 6, 6</td>
+<td headers="Field.Note" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Type.OR.Show.Slider.Number" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Min" class="gt_row gt_center">NA</td>
+<td headers="Text.Validation.Max" class="gt_row gt_center">NA</td>
+<td headers="Identifier." class="gt_row gt_center">NA</td>
+<td headers="Branching.Logic..Show.field.only.if...." class="gt_row gt_center">NA</td>
+<td headers="Required.Field." class="gt_row gt_center">NA</td>
+<td headers="Custom.Alignment" class="gt_row gt_center">NA</td>
+<td headers="Question.Number..surveys.only." class="gt_row gt_center">NA</td>
+<td headers="Matrix.Group.Name" class="gt_row gt_center">NA</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="upload-the-datadictionary" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Upload the DataDictionary<a href="redcap-data.html#upload-the-datadictionary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="redcap-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a>REDCapR<span class="sc">::</span><span class="fu">redcap_metadata_write</span>(dd_upload,</span>
+<span id="cb21-2"><a href="redcap-data.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                               <span class="at">uri=</span>,</span>
+<span id="cb21-3"><a href="redcap-data.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                               <span class="at">token=</span>)</span></code></pre></div>
 <p><em>Next steps are coming</em></p>
 
 </div>

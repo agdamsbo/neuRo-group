@@ -20,4 +20,8 @@ redcap-data
 redcap-scratch
 redcap-dataset
 create-a-data-dictionary
+specify-variable-names-etc.
+format-choices
+merging-and-data-validation
+upload-the-datadictionary
 literature
