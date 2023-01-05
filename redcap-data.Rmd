@@ -1,0 +1,42 @@
+# Building a REDCap database {#redcap-data}
+
+I will try to provide examples for two cases: 
+
+## Creating a database {#redcap-scratch}
+
+Lessons learned...
+
+
+## Setting up a database from a dataset {#redcap-dataset}
+
+Below will follow steps necessary to get a data base set up based on a data set provided.
+
+### Create a data dictionary
+
+Copy and run the following to create a DataDictionary draft.
+
+Change the `var_name` vector to the variable names of your own project and the same for `instrument`. To fill out the rest, open the .ods file in a visual editor as LibreOffice go manual.
+
+```{r redcap-dd-1}
+require(readODS)
+
+var_name <- c("record_id",colnames(stRoke::talos))
+instrument = c("incl","incl","follow1","follow6","incl","incl","incl")
+
+(df <- data.frame(Variable...Field.Name=var_name,
+           Form.Name=instrument,
+           Field.Type = "text",
+           Choices..Calculations..OR.Slider.Labels = "",
+           Field.Label = ""))
+
+write_ods(df,
+          path = "dd_draft.ods")
+```
+
+Have a look at the demonstration file below for inspiration.
+
+```{r redcap-dd-example}
+head(read.csv("./redcap/REDCapDataDictonaryDemo.csv"))
+```
+
+_Next steps are coming_

@@ -1,7 +1,4 @@
 intro
-workflow
-getting-access
-downloading-data
 recom
 applications-of-r-in-healthcare
 more-advanced-r
@@ -10,10 +7,17 @@ on-geocomputation
 inspiration-for-plots
 on-people-analytics
 statistacal-learning
+finalfit
 stRoke
 install
 events-and-repeated-instruments
-redcap-data
-building-a-data-base
+redcap-intro
+getting-access
+downloading-data
+redcap-adv
 downloading-data-1
+redcap-data
+redcap-scratch
+redcap-dataset
+create-a-data-dictionary
 literature

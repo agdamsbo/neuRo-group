@@ -1,10 +1,12 @@
-# Workflow in data management {#workflow}
+# Intro to REDCap data {#redcap-intro}
 
-Working with data analysis in the research group, and in general it is highly advisable to keep data at a secure server (like [REDCap](redcap.rm.dk)) and only working on temporary data on your machine only saving outcome and aggregated tables if necessary.
+This section is intended as a "REDCap data manipulation 101" for pre-graduate students in the group and as an intro to getting RStudio set up for work with REDCap data.
 
 In the following is a guide to get started working on REDCap data in R using the [REDCapR-package](https://ouhscbbmc.github.io/REDCapR/).[@R-REDCapR]
 
 Following the package link provides an extensive description on workflows and functionality. However, sometimes less is more, and so goes.
+
+A more thorough discussion on REDCap data can be found later as well as a chapter on tips to building a REDCap database.
 
 ## Getting access
 
@@ -23,7 +25,7 @@ Do note, that the name "API_KEY" can be changed to whatever you prefer. Note tha
 
 ## Downloading data
 
-There are different packages to access and download data from R. In the [REDCap-tools repository](), available tools and packages are referenced. Here I will provide an example, as to download minimal data in a focused way, using REDCapR.[@R-REDCapR]. 
+There are different packages to access and download data from R. In the [REDCap-tools repository](https://redcap-tools.github.io/projects/), available tools and packages are referenced. Here I will provide an example, as to download minimal data in a focused way, using REDCapR.[@R-REDCapR]. 
 
 Please have a look in the [REDCap-chapter](#redcap-data) for an optimised approach when handling events and repeated instruments.
 
