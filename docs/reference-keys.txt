@@ -24,4 +24,5 @@ specify-variable-names-etc.
 format-choices
 merging-and-data-validation
 upload-the-datadictionary
+coming-up
 literature

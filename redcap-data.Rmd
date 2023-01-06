@@ -55,7 +55,7 @@ system2("open", "dd_draft.ods")
 Type or paste the needed information manually, save the file with a new name (I did "dd_draft_adds.ods") and load it again.
 
 ```{r redcap-dd-adds}
-(dd <- read_ods("dd_draft_adds.ods"))
+(dd <- read_ods("dd_draft_adds.ods", na = ""))
 ```
 
 ### Format choices
@@ -103,11 +103,17 @@ col_miss <- demo_names[!demo_names %in% colnames(dd)]
 df_miss <- data.frame(matrix(nrow = nrow(dd), ncol=length(col_miss)))
 colnames(df_miss) <- col_miss
 
-(dd_upload <- cbind(dd,df_miss)[demo_names]) |> gt::gt()
+dd_upload <- cbind(dd,df_miss)[demo_names]
+
+dd_upload$Text.Validation.Type.OR.Show.Slider.Number[grepl("_date",dd_upload$Variable...Field.Name)] <- "date_dmy"
+
+dd_upload |> gt::gt()
 ```
 
 
 ### Upload the DataDictionary
+
+The DataDictionary can be uploaded using the API or manually via the REDCap webpage. Here I'll show the first option:
 
 ```{r redcap_dd-write, eval=FALSE}
 REDCapR::redcap_metadata_write(dd_upload,
@@ -116,4 +122,8 @@ REDCapR::redcap_metadata_write(dd_upload,
 ```
 
 
-_Next steps are coming_
+## Coming up
+
+- Rewrite of chapter to a more generel use case
+- Tips for branching and calculations
+- more...

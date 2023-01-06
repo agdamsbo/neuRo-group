@@ -159,6 +159,8 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preamble</a>
 <ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#content"><i class="fa fa-check"></i>Content</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-author"><i class="fa fa-check"></i>The author</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#source"><i class="fa fa-check"></i>Source</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to R</a></li>
@@ -198,6 +200,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.2.4" data-path="redcap-data.html"><a href="redcap-data.html#merging-and-data-validation"><i class="fa fa-check"></i><b>6.2.4</b> Merging and data validation</a></li>
 <li class="chapter" data-level="6.2.5" data-path="redcap-data.html"><a href="redcap-data.html#upload-the-datadictionary"><i class="fa fa-check"></i><b>6.2.5</b> Upload the DataDictionary</a></li>
 </ul></li>
+<li class="chapter" data-level="6.3" data-path="redcap-data.html"><a href="redcap-data.html#coming-up"><i class="fa fa-check"></i><b>6.3</b> Coming up</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>7</b> Literature</a></li>
 <li class="divider"></li>
@@ -225,27 +228,29 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">neuRo reference book</h1>
 <p class="author"><em>Andreas Gammelgaard Damsbo</em></p>
-<p class="date"><em>Last render: 2023-01-05</em></p>
+<p class="date"><em>Last render: 06.Jan.2023-20:07</em></p>
 </div>
 <div id="preamble" class="section level1 unnumbered hasAnchor">
 <h1>Preamble<a href="index.html#preamble" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This book is created and maintained by Andreas G Damsbo(<a href="https://github.com/agdamsbo">GitHub</a>, <a href="https://orcid.org/my-orcid?orcid=0000-0002-7559-1154">ORCiD</a>, <a href="mailto:andrlr@rm.dk">email</a>), as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.</p>
-<p>In the group we mainly work in R and use REDCap<span class="citation">(<a href="#ref-harrisResearchElectronicData2009" role="doc-biblioref">Harris et al. 2009</a>)</span> <span class="citation">(<a href="#ref-harrisREDCapConsortiumBuilding2019" role="doc-biblioref">Harris et al. 2019</a>)</span> for data collection. In this book I will include workflow examples on how to work with data from REDCap in R, but also share tips to buiilding a database in REDCap, a task many PhD-student may only experience once, and hence the individual experience is limited.</p>
-<p>The book is build using the <strong>bookdown</strong> package<span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2022</a>)</span> using the <a href="https://github.com/rstudio/bookdown-demo"><strong>bookdown-demo</strong></a>.</p>
+<p>This book started as collection of bookmarks for learning and working in R with health data as part of a R usergroup in our research group. It has evolved quite a bit, and can be seen as more of a handbook for the clinical researcher using <a href="">REDCap</a> for data collection and R for data analysis.</p>
+<div id="content" class="section level2 unnumbered hasAnchor">
+<h2>Content<a href="index.html#content" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The book consists of several sections. The first part is concerned with recommendations for the new R-user to get started. The next section focuses on the use of REDCap, from getting access to data to building a database. Lastly the package <code>{stRoke}</code> is introduced, which is a small toolbox of collected tools for easier data management and analysis.</p>
+</div>
+<div id="the-author" class="section level2 unnumbered hasAnchor">
+<h2>The author<a href="index.html#the-author" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This book was created and is maintained by Andreas G Damsbo (<a href="https://github.com/agdamsbo">GitHub</a>, <a href="https://orcid.org/my-orcid?orcid=0000-0002-7559-1154">ORCiD</a>), clinical researcher and PhD-student at Aarhus University and Aarhus University Hospital working in clinical stroke research.</p>
+</div>
 <div id="source" class="section level2 unnumbered hasAnchor">
 <h2>Source<a href="index.html#source" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The source files are <a href="https://github.com/agdamsbo/neuRo-group">hosted on GitHub</a>. You are welcome to contribute through comments, PRs or you can write an <a href="mailto:andrlr@rm.dk">email</a> to the author.</p>
+<p>This book and its content is open source and shared under the AGPL-3 license.</p>
+<p>The source files are <a href="https://github.com/agdamsbo/neuRo-group">hosted on GitHub</a>. You are welcome to contribute through comments, PRs or you can write an <a href="mailto:agdamsbo@clin.au.dk">email</a>.</p>
+<p>The book is build using the <strong>bookdown</strong> package<span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2022</a>)</span> using the <a href="https://github.com/rstudio/bookdown-demo"><strong>bookdown-demo</strong></a>.</p>
 
 </div>
 </div>
 <h3> Literature<a href="literature.html#literature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-harrisREDCapConsortiumBuilding2019" class="csl-entry">
-Harris, Paul A., Robert Taylor, Brenda L. Minor, Veida Elliott, Michelle Fernandez, Lindsay O’Neal, Laura McLeod, et al. 2019. <span>“The <span>REDCap</span> Consortium: <span>Building</span> an International Community of Software Platform Partners.”</span> <em>Journal of Biomedical Informatics</em> 95 (July): 103208. <a href="https://doi.org/10.1016/j.jbi.2019.103208">https://doi.org/10.1016/j.jbi.2019.103208</a>.
-</div>
-<div id="ref-harrisResearchElectronicData2009" class="csl-entry">
-Harris, Paul A., Robert Taylor, Robert Thielke, Jonathon Payne, Nathaniel Gonzalez, and Jose G. Conde. 2009. <span>“Research Electronic Data Capture (<span>REDCap</span>)—<span>A</span> Metadata-Driven Methodology and Workflow Process for Providing Translational Research Informatics Support.”</span> <em>Journal of Biomedical Informatics</em> 42 (2): 377–81. <a href="https://doi.org/10.1016/j.jbi.2008.08.010">https://doi.org/10.1016/j.jbi.2008.08.010</a>.
-</div>
 <div id="ref-R-bookdown" class="csl-entry">
 Xie, Yihui. 2022. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>

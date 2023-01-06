@@ -1,7 +1,7 @@
 ---
 title: "neuRo reference book"
 author: "Andreas Gammelgaard Damsbo"
-date: "Last render: `r Sys.Date()`"
+date: "Last render: `r format(Sys.time(), format='%d.%b.%Y-%H:%M')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -14,15 +14,23 @@ description: "This is a reference book on introducing working in R and reference
 
 # Preamble {-}
 
-This book is created and maintained by Andreas G Damsbo([GitHub](https://github.com/agdamsbo), [ORCiD](https://orcid.org/my-orcid?orcid=0000-0002-7559-1154), [email](mailto:andrlr@rm.dk)), as part of the R-group on neuroscience research at the Neurovascular Research Group at Aarhus University Hospital, Denmark.
+This book started as collection of bookmarks for learning and working in R with health data as part of a R usergroup in our research group. It has evolved quite a bit, and can be seen as more of a handbook for the clinical researcher using [REDCap]() for data collection and R for data analysis.
 
-In the group we mainly work in R and use REDCap[@harrisResearchElectronicData2009] [@harrisREDCapConsortiumBuilding2019] for data collection. In this book I will include workflow examples on how to work with data from REDCap in R, but also share tips to buiilding a database in REDCap, a task many PhD-student may only experience once, and hence the individual experience is limited. 
+## Content {-}
 
-The book is build using the **bookdown** package[@R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
+The book consists of several sections. The first part is concerned with recommendations for the new R-user to get started. The next section focuses on the use of REDCap, from getting access to data to building a database. Lastly the package `{stRoke}` is introduced, which is a small toolbox of collected tools for easier data management and analysis.
+
+## The author {-}
+
+This book was created and is maintained by Andreas G Damsbo ([GitHub](https://github.com/agdamsbo), [ORCiD](https://orcid.org/my-orcid?orcid=0000-0002-7559-1154)), clinical researcher and PhD-student at Aarhus University and Aarhus University Hospital working in clinical stroke research.
 
 ## Source {-}
 
-The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group). You are welcome to contribute through comments, PRs or you can write an [email](mailto:andrlr@rm.dk) to the author.
+This book and its content is open source and shared under the AGPL-3 license.
+
+The source files are [hosted on GitHub](https://github.com/agdamsbo/neuRo-group). You are welcome to contribute through comments, PRs or you can write an [email](mailto:agdamsbo@clin.au.dk).
+
+The book is build using the **bookdown** package[@R-bookdown] using the [**bookdown-demo**](https://github.com/rstudio/bookdown-demo).
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
