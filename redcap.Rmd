@@ -1,0 +1,11 @@
+# REDCap {#redcap}
+
+Working with data in our group, most data is collected and stored in REDCap databases.
+
+From REDCap data can be exported as spreadsheets and stored on a computer or in a safe cloud. A different approach, is to access data directly from R without downloading and storing data on your computer, which is preferable for obvious reasons.
+
+I am currently working on a [REDCap R Handbook](https://agdamsbo.github.io/redcap-r-handbook/) covering interfacing with REDCap from R.
+
+The goal is to cover the basics of accessing REDCap from R, data management, and how to build a database in R. Go and have a look, and don't hesitate to suggest additional areas or functionality to cover.
+
+

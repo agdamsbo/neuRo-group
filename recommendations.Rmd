@@ -55,3 +55,6 @@ Tee book can be [downloaded for free as a PDF](https://hastie.su.domains/ISLR2/I
 
 The [finalfit package](https://finalfit.org) provides functions that help you quickly create elegant final results tables and plots when modelling in R. These can easily be exported as Word documents, PDFs, or html files.
 
+## ggpubr
+
+[https://rpkgs.datanovia.com/ggpubr/](https://rpkgs.datanovia.com/ggpubr/)

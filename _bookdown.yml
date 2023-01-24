@@ -8,7 +8,5 @@ rmd_files: ["index.Rmd",
     "intro.Rmd",
     "recommendations.Rmd",
     "stroke-package.Rmd",
-    "redcap-intro.Rmd",
-    "redcap-adv.Rmd",
-    "redcap-data.Rmd",
+    "redcap.Rmd",
     "literature.Rmd"]

@@ -14,17 +14,15 @@ description: "This is a reference book on introducing working in R and reference
 
 # Preamble {-}
 
-This book started as collection of bookmarks for learning and working in R with health data as part of a R usergroup in our research group. It has evolved quite a bit, and can be seen as more of a handbook for the clinical researcher using [REDCap]() for data collection and R for data analysis.
-
-## Content {-}
-
-The book consists of several sections. The first part is concerned with recommendations for the new R-user to get started. The next section focuses on the use of REDCap, from getting access to data to building a database. Lastly the package `{stRoke}` is introduced, which is a small toolbox of collected tools for easier data management and analysis.
+This book started as collection of bookmarks for learning and working in R with health data as part of a R usergroup in our research group.
+The first part is concerned with recommendations for the new R-user on how to get started, including bookmarks to packages used within the group.
+In the last part, the package `{stRoke}` is introduced, which is a small toolbox of collected tools for easier data management and analysis. And then a reference to the [REDCap R Handbook](https://agdamsbo.github.io/redcap-r-handbook/) is provided to help on getting started with using REDCap data in R.
 
 ## The author {-}
 
 This book was created and is maintained by Andreas G Damsbo ([GitHub](https://github.com/agdamsbo), [ORCiD](https://orcid.org/my-orcid?orcid=0000-0002-7559-1154)), clinical researcher and PhD-student at Aarhus University and Aarhus University Hospital working in clinical stroke research.
 
-## Source {-}
+### Source {-}
 
 This book and its content is open source and shared under the AGPL-3 license.
 
